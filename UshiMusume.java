@@ -28,9 +28,6 @@ public class UshiMusume{
 		System.out.println("私の名前はSHAZNA。今あなたの心に直接語り掛けています。");
 		System.out.println("あなたにはウシ娘のブリーダーとして世界を救う使命があります。");
 		System.out.println("最初に、あなたのパートナーとなるウシ娘を召喚しましょう。");
-
-
-
 		int nSp;
 		int[] status;
 		while(true){
@@ -45,8 +42,6 @@ public class UshiMusume{
 			System.out.println("*****");
 			showStatus(status,params);
 			System.out.println("*****");
-
-
 			System.out.println("このウシ娘をパートナーにしますか？");
 			System.out.println("はい：1");
 			System.out.println("いいえ：2");
@@ -59,8 +54,6 @@ public class UshiMusume{
 			System.out.printf("%sは悲しそうな表情を浮かべながら消滅してしまいました。%n",species[nSp]);
 			System.out.println("*****");
 		}
-
-
 		System.out.printf("%sに名前を付けましょう。%n",species[nSp]);
 		System.out.print("名前を入力>>");
 		String name = sc.nextLine();
@@ -69,18 +62,15 @@ public class UshiMusume{
 		System.out.println("*****");
 		System.out.println("ファームに移動しました。");
 		int age=0;
-		int fatigue=0;
-		int shape=50;
-		int feed=0;
-		int bse=0;
-		int dB=0;
-		double boost=1.0;
-		int action=0;
+		int fatigue=0; //疲労パラメータ
+		int shape=50; //体型パラメータ
+		int bse=0; //狂牛病パラメータ
+		double boost=1.0; //能力UP補正
 		int week=1;
 		while(true){
-		System.out.println("*****");
+			System.out.println("*****");
 			System.out.printf("Week %d%n",week);
-		System.out.println("*****");
+			System.out.println("*****");
 			if(age>240){
 				System.out.printf("%sは天寿を全うしました。%n",name);
 				System.out.println("Fin");
@@ -118,12 +108,13 @@ public class UshiMusume{
 				System.out.println("GAME OVER");
 				break;
 			}
+			System.out.println("*****");
 			System.out.printf("%sの餌を選択してください。%n",name);
 			System.out.println("草：1");
 			System.out.println("穀物：2");
 			System.out.println("肉骨粉：3");
 			System.out.print("選択肢を入力>>");
-			feed = sc.nextInt();sc.nextLine();
+			int feed = sc.nextInt();sc.nextLine();
 			if(feed==1){
 				System.out.printf("%sは草を食べた。%n",name);
 				shape+=3;
@@ -135,7 +126,7 @@ public class UshiMusume{
 			}else{
 				System.out.printf("%sは肉骨粉を食べた。%n",name);
 				shape+=10;
-				dB=rand.nextInt(30);
+				int dB=rand.nextInt(30);
 				bse+=dB;
 				boost=3.0;
 			}
@@ -149,7 +140,9 @@ public class UshiMusume{
 					status[i]=(int)(status[i]*0.9);
 				}
 			}
-			do{
+			int action=0;
+			while(action==0){
+				System.out.println("*****");
 				System.out.println("行動を選択してください。");
 				System.out.printf("%sのステータスを確認する：0%n",name);
 				System.out.printf("%sを調教する：1%n",name);
@@ -163,9 +156,8 @@ public class UshiMusume{
 					System.out.printf("種族：%s%n",species[nSp]);
 					System.out.printf("年齢：%s歳%sヵ月%n",age/12,age%12);
 					showStatus(status,params);
-					System.out.println("*****");
 				}	
-			}while(action==0);
+			}
 			if(action==1){
 				training(status,params,spRatio,nSp,boost);
 				fatigue+=(rand.nextInt(11)+5);;
@@ -220,12 +212,8 @@ public class UshiMusume{
 		System.out.printf("%s調教をしました。%n",params[select]);
 		int val = rand.nextInt(21)+10;
 		int dSt = (int)(val*spRatio[nSp][select]*boost);
-		//int dFa = rand.nextInt(11)+5;
-		//int dSh = rand.nextInt(6)+5;
 		System.out.printf("%sが%d上がりました。%n",params[select],dSt);
 		status[select]+=dSt;
-		//fatigue+=dFa;
-		//shape+=dSh;
 	}
 	static void danadana(String name,int[] status){
 		String[] foods={"ローストビーフ","ユッケ","ステーキ","焼肉","すき焼き","ビーフストロガノフ","牛丼"};
