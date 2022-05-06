@@ -16,8 +16,8 @@ public class UshiMusume{
 		};
 		while(true){
 			System.out.println("きこえますか……きこえますか……");
-			System.out.println("はい：1");
-			System.out.println("いいえ：2");
+			System.out.println("1: はい");
+			System.out.println("2: いいえ");
 			System.out.print("選択肢を入力>>");
 			int select = sc.nextInt();sc.nextLine();
 			if(select==1){
@@ -43,8 +43,8 @@ public class UshiMusume{
 			showStatus(status,params);
 			System.out.println("*****");
 			System.out.println("このウシ娘をパートナーにしますか？");
-			System.out.println("はい：1");
-			System.out.println("いいえ：2");
+			System.out.println("1: はい");
+			System.out.println("2: いいえ");
 			System.out.print("選択肢を入力>>");
 			int select = sc.nextInt();sc.nextLine();
 			System.out.println("*****");
@@ -59,6 +59,11 @@ public class UshiMusume{
 		String name = sc.nextLine();
 		System.out.printf("%s……良い名前ですね。%n",name);
 		System.out.printf("%sを最高のウシ娘に育てましょう!%n",name);
+		try{
+			Thread.sleep(777);
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
 		System.out.println("*****");
 		System.out.println("ファームに移動しました。");
 		int age=0;
@@ -66,10 +71,10 @@ public class UshiMusume{
 		int shape=50; //体型パラメータ
 		int bse=0; //狂牛病パラメータ
 		double boost=1.0; //能力UP補正
-		int week=1;
+		int month=1;
 		while(true){
 			System.out.println("*****");
-			System.out.printf("Week %d%n",week);
+			System.out.printf("Month %d%n",month);
 			System.out.println("*****");
 			if(age>240){
 				System.out.printf("%sは天寿を全うしました。%n",name);
@@ -110,9 +115,9 @@ public class UshiMusume{
 			}
 			System.out.println("*****");
 			System.out.printf("%sの餌を選択してください。%n",name);
-			System.out.println("草：1");
-			System.out.println("穀物：2");
-			System.out.println("肉骨粉：3");
+			System.out.println("1: 草");
+			System.out.println("2: 穀物");
+			System.out.println("3: 肉骨粉");
 			System.out.print("選択肢を入力>>");
 			int feed = sc.nextInt();sc.nextLine();
 			if(feed==1){
@@ -144,10 +149,10 @@ public class UshiMusume{
 			while(action==0){
 				System.out.println("*****");
 				System.out.println("行動を選択してください。");
-				System.out.printf("%sのステータスを確認する：0%n",name);
-				System.out.printf("%sを調教する：1%n",name);
-				System.out.printf("%sを休養させる：2%n",name);
-				System.out.printf("%sをドナドナする：3%n",name);
+				System.out.printf("0: %sのステータスを確認する%n",name);
+				System.out.printf("1: %sを調教する%n",name);
+				System.out.printf("2: %sを休養させる%n",name);
+				System.out.printf("3: %sをドナドナする%n",name);
 				System.out.print("選択肢を入力>>");
 				action = sc.nextInt();sc.nextLine();
 				System.out.println("*****");
@@ -174,7 +179,12 @@ public class UshiMusume{
 				break;
 			}
 			age+=1;
-			week+=1;
+			month+=1;
+			try{
+				Thread.sleep(777);
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
 		}
 	}
 	static int calcSeed(String spell){
@@ -201,12 +211,12 @@ public class UshiMusume{
 		Scanner sc = new Scanner(System.in);
 		Random rand = new Random();
 		System.out.println("調教内容を選択してください。");
-		System.out.println("ライフ調教:0");
-		System.out.println("ちから調教:1");
-		System.out.println("丈夫さ調教:2");
-		System.out.println("命中調教:3");
-		System.out.println("回避調教:4");
-		System.out.println("かしこさ調教:5");
+		System.out.println("0: ライフ調教");
+		System.out.println("1: ちから調教");
+		System.out.println("2: 丈夫さ調教");
+		System.out.println("3: 命中調教");
+		System.out.println("4: 回避調教");
+		System.out.println("5: かしこさ調教");
 		System.out.print("選択肢を入力>>");
 		int select = sc.nextInt();sc.nextLine();
 		System.out.printf("%s調教をしました。%n",params[select]);
